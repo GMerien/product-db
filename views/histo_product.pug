@@ -1,0 +1,40 @@
+extends layout
+
+block content 
+    .container
+        .comps
+            .row
+                .col-xs-2
+                    .affix
+                        h1
+                            a(href=`../${product[0].name}`)= product[0].name
+                        p.lead= product[0].description
+                .col-xs-8.col-xs-offset-1.comps
+                    h1 Historique
+                    - for (let i = 0; i < product[0].composition.length; i++){
+                    - if (product[0].composition[i].isDeleted == false){
+                    - let name = product[0].composition[i].ename
+                    - let len = product[0].composition[i].modifications.length
+
+                    .panel.panel-default
+                        .panel-heading= name
+                        .panel-body
+                            table.table.table-striped
+                                tr
+                                    th Valeur
+                                    th Date de modification
+                                    - if(user.isAdmin){
+                                    th Annuler
+                                    - }
+                                - for (let j = len-1; j >= 0; j--){
+                                - let date = product[0].composition[i].modifications[j].mdate
+                                tr
+                                    td= product[0].composition[i].modifications[j].mvalue
+                                    td= date
+                                    - if(user.isAdmin){
+                                    td
+                                        a.glyphicon.glyphicon-remove(href=`${i}/${product[0].composition[i].modifications[j]._id}/del_component`)
+                                    - }
+                                - }
+                    -}
+                    -}

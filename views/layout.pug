@@ -1,0 +1,43 @@
+doctype html
+
+- if(dir) { dir = "../"; }
+- else { dir = ""; }
+
+html(lang='fr')
+    head
+        meta(charset='utf-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        meta(name='description', content='BDD Produits')
+        meta(name='author', content='Grégoire MERIEN')
+        title=`${title}`
+        link(href=`${dir}../css/bootstrap.min.css`, rel='stylesheet')
+        link(href=`${dir}../css/style.css`, rel='stylesheet')
+    body
+        nav.navbar.navbar-inverse.navbar-fixed-top
+            .container-fluid
+                a.navbar-brand(href='/products') BDD Produits
+                form.navbar-form.navbar-center(method="post" action='/recherche')
+                    .input-group
+                        input.form-control(type='text', placeholder='Rechercher', name='search')
+                        .input-group-btn
+                            button.btn.btn-default(type='submit' formmethod='post')
+                                i.glyphicon.glyphicon-search
+                ul.nav.navbar-nav.navbar-right
+                    - if(user){
+                    li
+                        a(href='/user')= user.username
+                    li
+                        a(href='/signout')
+                            span.glyphicon.glyphicon-log-out
+                            |  Logout
+                    -}
+                    - else{
+                    li
+                        a(href='/auth')
+                            span.glyphicon.glyphicon-log-in
+                            |  Login
+                    -}
+        block content
+
+        script(src=`${dir}../js/jquery.min.js`)
+        script(src=`${dir}../js/bootstrap.min.js`)

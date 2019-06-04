@@ -1,0 +1,36 @@
+extends layout
+
+
+block content 
+    
+    .container
+        .comps
+            .row
+                .col-xs-2
+                    .affix
+                        img(alt='', src='../img/ico.jpg')
+                        h1= product[0].name
+                        p.lead= product[0].description
+                        h2.glyphicon.glyphicon-time
+                            a(href=`${product[0].name}/historic`)  Historique
+                .col-xs-8.col-xs-offset-1.comps
+                    h1 Composition
+                    - for (let i = 0; i < product[0].composition.length; i++){
+                    - if (product[0].composition[i].isDeleted == false){
+                    - let name = product[0].composition[i].ename
+                    - let len = product[0].composition[i].modifications.length
+                    - let value = product[0].composition[i].modifications[len-1].mvalue
+                    .panel.panel-default
+                        .panel-heading= name
+                            -if(user){
+                                span
+                                    a.pull-right.glyphicon.glyphicon-remove(href=`${product[0].name}/${i}/remove`)
+                                a.pull-right.glyphicon.glyphicon-pencil(href=`${product[0].name}/${i}`)
+                            -}
+                        .panel-body= value
+                    - }
+                    - }
+
+                    - if(user){
+                    a.glyphicon.glyphicon-plus(href=`${product[0].name}/add_component`)  Ajouter un composant
+                    - }

@@ -1,0 +1,16 @@
+extends layout
+
+block content
+    #main-div
+        .container
+            .login-form
+                .main-div
+                    .panel
+                        h2 Ajouter un composant
+                        p Rentrer un nom et sa valeur
+                    form#Add(method="post" action=``)
+                        .form-group
+                            input#inputName.form-control(type='text', placeholder='Nom', name='cname')
+                        .form-group
+                            input#inputDescription.form-control(type='text', placeholder='', name='cval')
+                        button.btn.btn-primary(type='submit') Créer

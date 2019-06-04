@@ -1,0 +1,16 @@
+extends layout
+
+block content
+    #main-div
+        .container
+            .login-form
+                .main-div
+                    .panel
+                        h2 Ajouter un produit
+                        p Rentrer un nom et une description
+                    form#Add(method="post" action='/products')
+                        .form-group
+                            input#inputName.form-control(type='text', placeholder='Nom', name='pname')
+                        .form-group
+                            textarea#inputDescription.form-control(type='password', placeholder='description', name='pdescription')
+                        button.btn.btn-primary(type='submit') Créer

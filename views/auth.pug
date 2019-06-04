@@ -1,0 +1,18 @@
+extends layout
+
+block content
+    #main-div
+        .container
+            .login-form
+                .main-div
+                    .panel
+                        h2 Connexion
+                        p Rentrez votre nom d'utilisateur et votre mot de passe
+                    form#Login(action='/auth', method='POST')
+                        .form-group
+                            input#inputEmail.form-control(type='text', name='username', placeholder='')
+                        .form-group
+                            input#inputPassword.form-control(type='password', name='password' placeholder='Mot de passe')
+                        .forgot
+                            a(href='/register') Inscription
+                        button.btn.btn-primary(type='submit') Connexion

@@ -1,0 +1,22 @@
+extends layout
+
+block content 
+    .container
+        - if(products[0]){
+        .description
+            h3 Liste des produits correspondants à la recherche #{searched} :
+        .row
+            - for (key in products){
+            .col-xs-4.product-grid
+                .image
+                    a(href=`/products/${products[key].name}`)
+                        img(src='img/ico.jpg')
+                        .overlay
+                            .detail Détails
+                h3.text-center= products[key].name
+            - }
+        - }
+        - else{
+        .description
+            h3 Aucun produit trouvé pour la recherche #{searched} :
+        -}

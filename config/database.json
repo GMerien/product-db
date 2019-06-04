@@ -1,0 +1,7 @@
+{
+    "user": "",
+    "password": "",
+    "domain": "localhost",
+    "port": 27017,
+    "database": "pweb"
+}

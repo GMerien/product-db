@@ -1,0 +1,14 @@
+extends layout
+
+block content
+    #main-div
+        .container
+            .login-form
+                .main-div
+                    .panel
+                        h2= `Editer le composant ${ename}`
+                        p Changer la valeur :
+                    form#Add(method="post" action=``)
+                        .form-group
+                            input#inputDescription.form-control(type='text', value= mvalue, name='mvalue')
+                        button.btn.btn-primary(type='editer') Editer

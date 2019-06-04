@@ -1,0 +1,28 @@
+extends layout
+
+block content 
+	.container
+		.description
+			h1 Liste des produits :
+		.row
+			// Product
+			- for (key in products){
+			.col-xs-4.product-grid
+				.image
+					a(href=`/products/${products[key].name}`)
+						img(src='img/ico.jpg')
+						.overlay
+							.detail Détails
+				h3.text-center= products[key].name
+			- }
+			-if(user){
+				.col-xs-4.product-grid
+					.image
+						a(href="/products/add_product")
+							img(src='img/plus.jpg')
+							.overlay
+								.detail Détails
+					h3.text-center Ajouter produit
+			-}
+			// ./Product
+
