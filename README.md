@@ -1,4 +1,4 @@
-# Products database project
+# Products database
 
 ## API
 
